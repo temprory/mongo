@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+//[mongodb://][user:pass@]host1[:port1][,host2[:port2],...][/database][?options]
+
 const defaultPoolSize = 10
 
 type MongoConf struct {
