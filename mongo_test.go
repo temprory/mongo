@@ -78,6 +78,7 @@ func TestMongo(t *testing.T) {
 						err = sessCopy.DB("dbtestinsert").C("test").Insert(doc)
 						//if err != nil {
 						fmt.Printf("time used: %v, insert %v error: %v\n", time.Since(t0), doc.Name, err)
+
 						//}
 					}()
 				} else {

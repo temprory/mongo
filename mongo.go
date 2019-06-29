@@ -62,7 +62,7 @@ func (wrap *MongoSessionWrap) ping() error {
 }
 
 type Mongo struct {
-	conf      MongoConf
+	Conf      MongoConf
 	ticker    *time.Ticker
 	chSession chan *MongoSessionWrap
 	sessions  []*MongoSessionWrap
@@ -137,7 +137,7 @@ func NewMongo(conf MongoConf) *Mongo {
 		logFatal("NewMongo failed: %v", err)
 	}
 
-	mongo := &Mongo{conf: conf, ticker: time.NewTicker(conf.keepaliveInterval), chSession: make(chan *MongoSessionWrap, conf.PoolSize)}
+	mongo := &Mongo{Conf: conf, ticker: time.NewTicker(conf.keepaliveInterval), chSession: make(chan *MongoSessionWrap, conf.PoolSize)}
 	mongo.sessions = append(mongo.sessions, &MongoSessionWrap{session, mongo, nil})
 	mongo.sessions[0].init(conf)
 	mongo.chSession <- mongo.sessions[0]
